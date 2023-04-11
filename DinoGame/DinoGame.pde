@@ -38,6 +38,8 @@ float speed = 10;
 int groundHeight = 250;
 int playerXpos = 150;
 
+int ret=500;
+
 ArrayList<Integer> obstacleHistory = new ArrayList<Integer>();
 ArrayList<Integer> randomAdditionHistory = new ArrayList<Integer>();
 
@@ -75,6 +77,7 @@ void draw() {
       genPlayerTemp.show();
     } else {//if dead move on to the next generation
       upToGen ++;
+     
       if (upToGen >= pop.genPlayers.size()) {//if at the end then return to the start and stop doing it
         upToGen= 0;
         showBestEachGen = false;
@@ -114,14 +117,20 @@ void drawBrain() {  //show the brain of whatever genome is currently showing
   int startY = 10;
   int w = 600;
   int h = 400;
+  
   if (showBestEachGen) {
     genPlayerTemp.brain.drawGenome(startX, startY, w, h);
   } else {
     for (int i = 0; i< pop.pop.size(); i++) {
       if (!pop.pop.get(i).dead) {
+        
         pop.pop.get(i).brain.drawGenome(startX, startY, w, h);
         break;
+        
       }
+      
+    
+      
     }
   }
 }
@@ -133,6 +142,8 @@ void writeInfo() {
   textSize(40);
   if (showBestEachGen) { //if showing the best for each gen then write the applicable info
     text("Счёт: " + genPlayerTemp.score, 30, height - 30);
+    
+    text("Осталось в популяции : " + ret, 30, height - 90);
     //text(, width/2-180, height-30);
     textAlign(RIGHT);
     text("Поколение: " + (genPlayerTemp.gen +1), width -40, height-30);
@@ -153,6 +164,8 @@ void writeInfo() {
     text("Пригнуться", 1220, 318);
   } else { //evolving normally 
     text("Счёт: " + floor(pop.populationLife/3.0), 30, height - 30);
+    
+     text("Осталось в популяции : " + ret, 30, height - 90);
     //text(, width/2-180, height-30);
     textAlign(RIGHT);
 

@@ -91,6 +91,12 @@ class Player {
       for (int i = 0; i< obstacles.size(); i++) {
         if (obstacles.get(i).collided(playerXpos, posY +dinoRun1.height/2, dinoRun1.width*0.5, dinoRun1.height)) {
           dead = true;
+          ret =ret-1;
+          
+          if (ret==0){
+           ret=500;
+          }
+          
         }
       }
 
@@ -98,10 +104,19 @@ class Player {
         if (duck && posY ==0) {
           if (birds.get(i).collided(playerXpos, posY + dinoDuck.height/2, dinoDuck.width*0.8, dinoDuck.height)) {
             dead = true;
+             ret =ret-1;
+                 if (ret==0){
+           ret=500;
+          }
+             
           }
         } else {
           if (birds.get(i).collided(playerXpos, posY +dinoRun1.height/2, dinoRun1.width*0.5, dinoRun1.height)) {
             dead = true;
+            ret =ret-1;
+              if (ret==0){
+           ret=500;
+          }
           }
         }
       }
@@ -109,6 +124,10 @@ class Player {
       for (int i = 0; i< replayObstacles.size(); i++) {
         if (replayObstacles.get(i).collided(playerXpos, posY +dinoRun1.height/2, dinoRun1.width*0.5, dinoRun1.height)) {
           dead = true;
+          ret =ret-1;
+              if (ret==0){
+           ret=500;
+          }
         }
       }
 
@@ -117,14 +136,25 @@ class Player {
         if (duck && posY ==0) {
           if (replayBirds.get(i).collided(playerXpos, posY + dinoDuck.height/2, dinoDuck.width*0.8, dinoDuck.height)) {
             dead = true;
+            ret =ret-1;
+                if (ret==0){
+           ret=500;
+          }
           }
         } else {
           if (replayBirds.get(i).collided(playerXpos, posY +dinoRun1.height/2, dinoRun1.width*0.5, dinoRun1.height)) {
             dead = true;
+            ret =ret-1;
+                if (ret==0){
+           ret=500;
+          }
           }
         }
       }
     }
+    
+    
+    
   }
 
 
